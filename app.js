@@ -2,6 +2,7 @@
 
 let selectArea = document.querySelector(".form-select")
 let cardArea = document.getElementById("card__area")
+let emptyDiv = document.createElement("div")
 
 
 // ********functions
@@ -11,8 +12,13 @@ function createOption (val, name){
     optionE.innerText = name
     selectArea.appendChild(optionE)
 }
+function deleteDiv (){
+    document.querySelector(".card").remove()
+}
 
 function createCard (imgage, name, currencies, link){
+    
+
     let cardDiv = document.createElement("div")
     cardDiv.className = "card mt-5 mb-5"
 
@@ -51,6 +57,7 @@ function createCard (imgage, name, currencies, link){
     cardDiv1.appendChild(ul)
     cardDiv.appendChild(cardDiv1)
     cardArea.appendChild(cardDiv)
+    
 }
 
 
@@ -77,6 +84,7 @@ selectArea.addEventListener("change", (e) => {
         createCard(data[0].flags.png, data[0].name.common, data[0].continents[0], data[0].maps.googleMaps )
         // createCard (imgage, name, currencies, link)
     })
+    deleteDiv()
 
     console.log(e.target.value);
 })
